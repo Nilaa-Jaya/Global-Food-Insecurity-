@@ -1,5 +1,165 @@
 # Data
 
 ## Description
+For this project, we are utilizing the World Food Security Outlook (WFSO) dataset, a globally recognized resource developed by the World Bank. This dataset offers a comprehensive view of severe food insecurity, providing historical, current, and projected data from 1999 to 2028. Covering 191 countries, the dataset supports an in-depth analysis of food insecurity prevalence and its contributing factors.
+
+
+
+### Source: 
+The dataset is produced and maintained by the World Bank Development Economics Data Group and the Agriculture Global Practice. It is publicly accessible via the World Bank Microdata Library and an accompanying API for efficient data integration.
+
+
+
+### Description:
+The dataset comprises 21,010 observations and focuses on key indicators such as the prevalence of severe food insecurity, population sizes of affected individuals, and the financing required to mitigate food insecurity risks. The data integrates multiple authoritative sources, including the FAO, IMF, and FEWS NET, and employs machine learning models to enhance accuracy and provide reliable projections.
+
+
+
+### Variables:
+•	iso3c: ISO 3166-1 alpha-3 country code identifying each country.
+
+•	country: Full name of the country or territory.
+
+•	indicator_short: A concise identifier for the specific indicator (e.g., “Prevalence”).
+
+•	indicator_long: A detailed description of the indicator being measured.
+
+•	unit: Unit of measurement, such as percentages (%) or monetary values (USD).
+
+•	year: Numeric year associated with the observation, ranging from 1999 to 2028.
+
+•	value: The numeric value of the indicator, representing food insecurity data.
+
+•	flag: A descriptor noting whether the data point is observed, estimated, or modeled.
+
+•	type: Classification of the observation (e.g., historical, preliminary, or forecast).
+
+•	note: Supplementary details about the data point, such as methodology or context.
+
+•	estimated: A binary indicator specifying whether the value was estimated (1) or directly observed (0).
+
+
+
+### Format:
+The dataset is structured with observations for each country-year combination, represented through 11 key variables. It is available in JSON and CSV formats, which can be transformed into tabular structures for analysis using tools like Python, R, or SQL.
+
+
+
+### Frequency of Updates:
+The WFSO dataset is updated three times annually, aligning with the IMF’s World Economic Outlook and FAO reports, ensuring timeliness and relevance.
+
+
+
+### Data Access and Cleaning:
+The World Food Security Outlook (WFSO) dataset is accessible through the World Bank’s API, which allows efficient retrieval and integration of data for analysis. The dataset includes 21,010 observations, providing insights into global food insecurity trends from 1999 to 2028. The API enables customized queries with parameters such as fields, filter, and limit to fetch specific variables or subsets of the data.
+
+
+
+### API Endpoints:
+•	Data: https://microdata.worldbank.org/index.php/api/tables/data/fcv/wfso
+
+•	Metadata: https://microdata.worldbank.org/index.php/api/tables/info/fcv/wfso
+
+Using R's httr package, data was retrieved in chunks to handle the large dataset efficiently. The limit parameter was set to 5,000 rows per request, and the offset parameter was iteratively adjusted to fetch subsequent rows. This method ensured efficient access to the entire dataset while adhering to API constraints.
+
+
+
+### Importing the Data:
+Using R's httr package, the data was fetched incrementally in chunks of 5,000 rows to handle the large dataset. Below is the R code used for data retrieval: 
+
+```{r}
+# Load required libraries
+library(httr)
+library(jsonlite)
+library(dplyr)
+```
+
+
+```{r}
+# Define the API endpoint
+base_url <- "https://microdata.worldbank.org/index.php/api/tables/data/fcv/wfso"
+limit <- 5000  # Number of rows per request
+total_rows <- 21010  # Total number of rows
+all_data <- list()  # List to store all rows of data
+
+
+```
+
+
+```{r}
+# Loop through the data in chunks
+for (offset in seq(0, total_rows, by = limit)) {
+  # Build the URL with limit and offset
+  url <- paste0(base_url, "?limit=", limit, "&offset=", offset)
+  
+  # Make the GET request
+  response <- GET(url)
+  if (status_code(response) == 200) {
+    # Parse the JSON response
+    data_chunk <- fromJSON(content(response, as = "text"), flatten = TRUE)$data
+    all_data <- append(all_data, list(data_chunk))
+    cat("Fetched", nrow(data_chunk), "rows. Total so far:", sum(sapply(all_data, nrow)), "\n")
+  } else {
+    cat("Error: ", status_code(response), ". Stopping.\n")
+    break
+  }
+}
+
+```
+
+
+
+```{r}
+# Combine all chunks into a single data frame
+df <- bind_rows(all_data)
+
+```
+
+
+```{r}
+# Save the data to a CSV file (optional)
+write.csv(df, "cleaned_data.csv", row.names = FALSE)
+
+```
+
+
+```{r}
+# Display the first few rows of the dataset
+head(df)
+
+```
+
+
+### Final Dataset:
+•	Format: A structured CSV file containing 21,010 rows and 11 columns.
+
+•	Variables: Representing food insecurity indicators, country-level data, and temporal trends.
+
+
 
 ## Missing value analysis
+Before proceeding with any analysis, it is essential to examine the dataset for missing values to ensure data completeness and accuracy. While the WFSO dataset is well-structured, missing values can occur due to data collection challenges, especially in global datasets with diverse sources. Identifying and addressing these gaps is a critical step in ensuring reliable analysis.
+
+
+
+### Missing Value Summary
+To begin, we first assess the dataset for missing values across all variables. This involves counting the number of rows and columns with missing data and calculating the percentage of missing values for each variable. This analysis provides an overview of the data quality and highlights areas that may require imputation or exclusion.
+
+Here’s how the missing values are summarized:
+
+•	Check for missing values in each column.
+
+•	Identify the percentage of missing data for each variable.
+
+•	Determine whether missingness is concentrated in specific variables (e.g., numerical vs. categorical) or is distributed across the dataset.
+
+
+
+
+
+
+
+
+
+
+

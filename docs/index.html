@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="AUTHOR1 (UNI1)">
-<meta name="author" content="AUTHOR2 (UNI2)">
-<meta name="dcterms.date" content="2023-11-07">
+<meta name="author" content="Nilaa Raghunathan (nr3005)">
+<meta name="author" content="Anouksha Rajesh (ar4829)">
+<meta name="dcterms.date" content="2024-11-20">
 
-<title>YOUR PROJECT TITLE</title>
+<title>EXPLORATORY DATA ANALYSIS OF GLOBAL FOOD INSECURITY INSIGHTS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,7 +49,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -58,6 +64,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -73,13 +80,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -88,12 +95,12 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">YOUR PROJECT TITLE</a> 
+      <a href="./">EXPLORATORY DATA ANALYSIS OF GLOBAL FOOD INSECURITY INSIGHTS</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/Nilaa-Jaya/Global-Food-Insecurity-" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -137,23 +144,30 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">1.1</span> BACKGROUND</a></li>
+  <li><a href="#relevance-of-the-topic" id="toc-relevance-of-the-topic" class="nav-link" data-scroll-target="#relevance-of-the-topic"><span class="header-section-number">1.2</span> RELEVANCE OF THE TOPIC</a></li>
+  <li><a href="#objectives-and-questions-of-interest" id="toc-objectives-and-questions-of-interest" class="nav-link" data-scroll-target="#objectives-and-questions-of-interest"><span class="header-section-number">1.3</span> OBJECTIVES AND QUESTIONS OF INTEREST</a></li>
+  <li><a href="#significance-of-the-dataset" id="toc-significance-of-the-dataset" class="nav-link" data-scroll-target="#significance-of-the-dataset"><span class="header-section-number">1.4</span> SIGNIFICANCE OF THE DATASET</a></li>
+  <li><a href="#expected-contribution" id="toc-expected-contribution" class="nav-link" data-scroll-target="#expected-contribution"><span class="header-section-number">1.5</span> EXPECTED CONTRIBUTION</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/Nilaa-Jaya/Global-Food-Insecurity-/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Nilaa-Jaya/Global-Food-Insecurity-/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">YOUR PROJECT TITLE</h1>
+<h1 class="title">EXPLORATORY DATA ANALYSIS OF GLOBAL FOOD INSECURITY INSIGHTS</h1>
 </div>
 
 
@@ -163,15 +177,15 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>AUTHOR1 (UNI1) </p>
-             <p>AUTHOR2 (UNI2) </p>
+             <p>Nilaa Raghunathan (nr3005) </p>
+             <p>Anouksha Rajesh (ar4829) </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 7, 2023</p>
+      <p class="date">November 20, 2024</p>
     </div>
   </div>
   
@@ -179,12 +193,51 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>This project aims to explore global food insecurity by analyzing data to uncover trends and patterns that shed light on the prevalence and drivers of severe food insecurity across 191 countries. Food insecurity is a pressing global challenge, shaped by economic, social, and environmental factors, and this analysis seeks to provide a clearer understanding of its scope and impact.</p>
+<p>Using data from the World Food Security Outlook (WFSO), the project will examine historical trends, current conditions, and projections related to severe food insecurity. This comprehensive dataset integrates information from key sources, including the FAO, IMF, and FEWS NET, and employs machine learning models to enhance accuracy and fill data gaps. By analyzing these patterns, we aim to highlight regional disparities and identify macroeconomic factors influencing food insecurity.</p>
+<p>The insights from this project are intended to contribute to discussions on food security policies and strategies, supporting global efforts to reduce hunger and promote sustainable development. Through exploratory data analysis and visualizations, this project will provide a foundation for informed decision-making and a deeper understanding of this critical issue.</p>
+<section id="background" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">1.1</span> BACKGROUND</h2>
+<p>Food insecurity refers to the lack of consistent access to sufficient, safe, and nutritious food to maintain an active and healthy life. It is a multifaceted global issue, influenced by economic instability, environmental challenges, and social inequalities. Severe food insecurity, in particular, is a critical measure, as it represents conditions where individuals go entire days without eating due to lack of resources.</p>
+<p>Understanding food insecurity is vital for policymakers and the global community as it directly impacts public health, economic development, and social stability. Addressing this issue is key to achieving the United Nations’ Sustainable Development Goal of Zero Hunger by 2030. Moreover, food insecurity serves as a barometer for broader challenges, such as poverty, inequality, and climate vulnerability.</p>
+<p>In recent years, global crises have significantly exacerbated food insecurity. The COVID-19 pandemic disrupted food supply chains and economies, pushing millions into hunger. Similarly, conflicts in regions like Ukraine and the Middle East have further strained food systems by disrupting production and trade. Climate change also poses a long-term threat, with extreme weather events such as droughts and floods reducing agricultural yields and displacing vulnerable populations. These challenges highlight the urgency of understanding and addressing food insecurity through informed analysis and targeted action.</p>
+</section>
+<section id="relevance-of-the-topic" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="relevance-of-the-topic"><span class="header-section-number">1.2</span> RELEVANCE OF THE TOPIC</h2>
+<p>The topic of global food insecurity is deeply significant due to its profound implications for health, equity, and sustainable development. Food is a fundamental human need, and the inability to access sufficient and nutritious food undermines individuals’ well-being and broader societal progress. By focusing on food insecurity, this project aims to contribute to a better understanding of this critical challenge and support initiatives that address its root causes.</p>
+<p>This analysis aligns closely with global efforts to achieve the United Nations Sustainable Development Goals, particularly Goal two - Zero Hunger. Eradicating hunger is central to fostering inclusive growth, reducing inequalities, and improving quality of life worldwide. Food insecurity not only reflects existing inequities but also perpetuates cycles of poverty, poor health, and limited opportunities.</p>
+<p>In a world facing escalating challenges like economic instability, climate change, and global conflicts, food insecurity is both a symptom and a driver of systemic vulnerabilities. This project is motivated by the desire to explore these interconnections, leveraging data to reveal patterns and inform more equitable and effective responses to food insecurity at the global scale. Through this lens, the analysis aspires to empower policymakers, researchers, and communities with actionable insights to foster resilience and progress.</p>
+</section>
+<section id="objectives-and-questions-of-interest" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="objectives-and-questions-of-interest"><span class="header-section-number">1.3</span> OBJECTIVES AND QUESTIONS OF INTEREST</h2>
+<p>The primary objective of this project is to analyze global food insecurity data to uncover meaningful patterns and trends that provide insights into its prevalence and contributing factors. By leveraging the comprehensive World Food Security Outlook (WFSO) dataset, this project aims to shed light on the severity of food insecurity across regions and over time. The findings will help identify key challenges and inform strategies to address this pressing issue.</p>
+<p>Some of the exploratory questions guiding this project include:</p>
+<p>• How has the prevalence of severe food insecurity evolved globally and regionally from 1999 to the present?</p>
+<p>• What are the geographic disparities in food insecurity, and which regions or countries face the highest levels of risk?</p>
+<p>• How do macroeconomic factors such as inflation, economic growth, and external shocks influence food insecurity trends?</p>
+<p>• Are there discernible patterns in financing needs and population sizes of the food-insecure across different countries?</p>
+<p>By addressing these questions, the project seeks to provide a nuanced understanding of food insecurity and its drivers, empowering stakeholders to develop data-driven policies and solutions.</p>
+</section>
+<section id="significance-of-the-dataset" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="significance-of-the-dataset"><span class="header-section-number">1.4</span> SIGNIFICANCE OF THE DATASET</h2>
+<p>The World Food Security Outlook (WFSO) dataset serves as a cornerstone for understanding global food insecurity. Provided by the World Bank, this dataset offers a unique and comprehensive view of severe food insecurity across 191 countries, spanning historical, current, and forecasted data from 1999 to 2028. Its wide scope and multidimensional structure make it an invaluable resource for analyzing trends and informing policy.</p>
+<p>A key strength of the WFSO dataset lies in its integration of machine learning techniques to address data gaps and improve estimation accuracy. By leveraging models like Cubist regression and incorporating forward-looking macroeconomic indicators from the IMF’s World Economic Outlook, the dataset provides robust projections that align with global economic forecasts. This approach enhances its reliability, making it suitable for longitudinal and cross-regional analyses.</p>
+<p>The dataset’s inclusion of diverse data sources, such as the FAO’s Food Insecurity Experience Scale and FEWS NET’s subnational data, further enriches its analytical value. It allows for the exploration of complex relationships between food insecurity and factors like inflation, economic growth, and safety net financing needs. As a result, the WFSO dataset not only captures the severity of food insecurity but also contextualizes it within broader economic and social frameworks, enabling more informed and actionable insights.</p>
+</section>
+<section id="expected-contribution" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="expected-contribution"><span class="header-section-number">1.5</span> EXPECTED CONTRIBUTION</h2>
+<p>This project aims to provide valuable insights into global food insecurity by analyzing patterns, trends, and contributing factors across regions and time periods. By leveraging the World Food Security Outlook (WFSO) dataset, the findings are expected to illuminate critical areas of vulnerability and resilience, offering a clearer understanding of the global food security landscape.</p>
+<p>The analysis will support policymakers, NGOs, and researchers by identifying key trends, such as regions most affected by severe food insecurity or the economic conditions closely associated with food shortages. These insights can guide the allocation of resources, design of intervention programs, and development of policies to mitigate food insecurity. Additionally, the project seeks to highlight gaps in existing data, encouraging further research and refinement in food security measurement and forecasting methods.</p>
+<p>Through exploratory data analysis and visualization, this project also contributes to raising awareness about food insecurity as a systemic issue tied to economic, social, and environmental factors. By presenting the findings in a clear and accessible manner, the project aspires to foster informed discussions and inspire actionable solutions to one of the world’s most pressing challenges.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -223,18 +276,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -266,11 +308,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -280,8 +361,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -293,7 +383,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -337,6 +550,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -362,6 +576,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -425,7 +665,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data.html" class="pagination-link">
+      <a href="./data.html" class="pagination-link" aria-label="Data">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -438,10 +678,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
-    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Nilaa-Jaya/Global-Food-Insecurity-/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Nilaa-Jaya/Global-Food-Insecurity-/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
   </div>
 </footer>
+
 
 
 
