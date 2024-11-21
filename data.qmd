@@ -72,6 +72,8 @@ Using R's httr package, the data was fetched incrementally in chunks of 5,000 ro
 library(httr)
 library(jsonlite)
 library(dplyr)
+library(tidyr)
+library(ggplot2)
 ```
 
 
@@ -140,9 +142,6 @@ head(df)
 ## Missing value analysis
 Before proceeding with any analysis, it is essential to examine the dataset for missing values to ensure data completeness and accuracy. While the WFSO dataset is well-structured, missing values can occur due to data collection challenges, especially in global datasets with diverse sources. Identifying and addressing these gaps is a critical step in ensuring reliable analysis.
 
-
-
-### Missing Value Summary
 To begin, we first assess the dataset for missing values across all variables. This involves counting the number of rows and columns with missing data and calculating the percentage of missing values for each variable. This analysis provides an overview of the data quality and highlights areas that may require imputation or exclusion.
 
 Here’s how the missing values are summarized:
@@ -152,6 +151,85 @@ Here’s how the missing values are summarized:
 •	Identify the percentage of missing data for each variable.
 
 •	Determine whether missingness is concentrated in specific variables (e.g., numerical vs. categorical) or is distributed across the dataset.
+
+```{r}
+# Calculate missing vs non-missing percentages
+missing_total <- sum(is.na(df))
+complete_total <- sum(!is.na(df))
+data_completeness <- data.frame(
+  Status = c("Non-Missing", "Missing"),
+  Count = c(complete_total, missing_total)
+)
+
+# Create a pie chart
+ggplot(data_completeness, aes(x = "", y = Count, fill = Status)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  labs(
+    title = "Data Completeness Summary",
+    fill = "Status"
+  ) +
+  scale_fill_manual(values = c("Non-Missing" = "skyblue", "Missing" = "red")) +
+  theme_void() +
+  theme(legend.title = element_text(size = 12), legend.text = element_text(size = 10))
+```
+
+- **Observations**:
+  The pie chart shows that the dataset is 100% complete, with all data points labeled as "Non-Missing."There are no missing values, as indicated by the absence of the "Missing" section in the pie chart.
+```{r}
+completeness_summary <- df |>
+  summarise(across(everything(), ~ sum(!is.na(.)) / nrow(df) * 100)) |>
+  pivot_longer(cols = everything(), names_to = "Variable", values_to = "Completeness")
+
+# Create a bar chart
+ggplot(completeness_summary, aes(x = reorder(Variable, -Completeness), y = Completeness)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  geom_text(aes(label = paste0(round(Completeness, 1), "%")), vjust = -0.5, size = 3) +
+  labs(
+    title = "Data Completeness by Variable",
+    x = "Variables",
+    y = "Percentage of Completeness"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+- **Observations**:
+Each bar represents a variable, and all bars reach 100%, indicating complete data for every column. There are no gaps or incomplete variables, confirming no missing values in the dataset.
+
+```{r}
+df_char <- df %>%
+  mutate(across(everything(), as.character))
+# Prepare data for the heatmap
+heatmap_data <- df_char %>%
+  mutate(row = row_number()) %>%
+  pivot_longer(cols = -row, names_to = "Variable", values_to = "Value") %>%
+  mutate(Missing = ifelse(is.na(Value), "Missing", "Not Missing"))
+# Plot the heatmap
+ggplot(heatmap_data, aes(x = Variable, y = row, fill = Missing)) +
+  geom_tile(color = "white") +
+  scale_fill_manual(values = c("Not Missing" = "steelblue", "Missing" = "red")) +
+  labs(
+    title = "Missing Values Heatmap",
+    subtitle = "Dataset is 100% complete (No Missing Values)",
+    x = "Variables",
+    y = "Rows"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+```
+- **Observations**:
+The heatmap shows no red tiles, meaning there are no missing data points across rows and variables. The dataset is entirely complete, as supported by the uniform "Not Missing" label for all data points.
+
+### Missing Value Summary
+
+- Total missing values: 0
+- Total variables analyzed: 11
+- Dataset is 100% complete with no missing values across any rows or columns.
 
 
 
