@@ -78,13 +78,10 @@ library(ggplot2)
 
 
 ```{r}
-# Define the API endpoint
 base_url <- "https://microdata.worldbank.org/index.php/api/tables/data/fcv/wfso"
 limit <- 5000  # Number of rows per request
 total_rows <- 21010  # Total number of rows
 all_data <- list()  # List to store all rows of data
-
-
 ```
 
 
