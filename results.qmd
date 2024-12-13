@@ -1,6 +1,7 @@
-#Results
+# Results
+
 ```{r}
-# Load required libraries
+
 library(httr)
 library(jsonlite)
 library(dplyr)
@@ -40,10 +41,10 @@ ggplot(global_trend, aes(x = year, y = avg_prevalence / 1e6)) +
   )
 
 ```
-```
-#1
+### Observations:
+
 The number of cases of acute food insecurity increased dramatically between 1999 and 2020, peaking during this period due to likely causes such global crises, socioeconomic challenges, and climate change. Even while levels are still significantly higher than in prior years, there is a little decline after 2020, which could be the consequence of global initiatives or regulatory changes.By 2025, the trend levels off, suggesting that efforts to address the root causes are either ceasing or decreasing. Food insecurity is still a worrying issue, despite some stability predicted until 2028, underscoring the urgent need for continued international efforts to effectively address it.
-```
+
 ```{r}
 #2.Regional Comparison of Food Insecurity Over Time:
 ##Faceted line graphs by region, showing trends in food insecurity.
@@ -65,7 +66,7 @@ ggplot(regional_trends_filtered, aes(x = year, y = avg_prevalence, color = count
   labs(
     title = "Country Trends in Severe Food Insecurity (1999-2028)",
     x = "Year",
-    y = "Average Prevalence (%)",
+    y = "Average Prevalence",
     color = "Country",
     caption = "Source: World Food Security Outlook (WFSO)"
   ) +
@@ -86,22 +87,21 @@ regional_trends_by_region <- data |>
   ungroup()
 
 # Create a regional line plot
-ggplot(regional_trends_by_region, aes(x = year, y = avg_prevalence, color = region)) +
+ggplot(regional_trends_by_region, aes(x = year, y = avg_prevalence/1e6, color = region)) +
   geom_line(size = 1) +
   labs(
     title = "Regional Trends in Severe Food Insecurity (1999-2028)",
     x = "Year",
-    y = "Average Prevalence (%)",
+    y = "Average Prevalence",
     color = "Region",
     caption = "Source: World Food Security Outlook (WFSO)"
   ) +
   theme_minimal()
 ```
 
-```         
+### Observations:
 
 The highest rates of severe food insecurity have been found in Asia, where they increased steadily between 1999 and 2020 before somewhat declining and stabilising after that year, most likely as a result of interventions or policies. On the other hand, during the course of the era, levels in places like North and South America remain constant and low. The rise in poverty in Asia between 2010 and 2020 underscores the need for global attention to address food poverty, natural disasters, and economic shocks, reducing regional disparities.
-```
 
 ```{r}
 #3. Country-Specific Trends:
@@ -128,7 +128,7 @@ ggplot(top_countries_data, aes(x = year, y = avg_prevalence, color = country, gr
   labs(
     title = "Food Insecurity Trends for Top 5 Most Affected Countries (1999-2028)",
     x = "Year",
-    y = "Average Prevalence (%)",
+    y = "Average Prevalence",
     color = "Country",
     caption = "Source: World Food Security Outlook (WFSO)"
   ) +
@@ -141,10 +141,9 @@ ggplot(top_countries_data, aes(x = year, y = avg_prevalence, color = country, gr
   )
 ```
 
-```         
-#3
+### Observations:
 The graph below illustrates the main trends in food insecurity of the top five most affected countries. China shows a steady decline, which is indicative of good policies, while the Democratic Republic of Congo has had a big increase since 2010, showing worse situations. Nigeria, India, and Pakistan have very stable trends, where only small improvements or changes have happened over time. The current situation indicates that Congo now tops the list with the highest rate of food insecurity, greater than any other country. These patterns mean that Congo and Nigeria require special assistance, and the successes seen in China serve as a good example of effective solutions. Future predictions show that matters will worsen in Congo if no action is taken, hence the need for special solutions.
-```
+
 
 ```{r}
 #4. Impact of Economic Shocks on Food Insecurity:
@@ -173,7 +172,7 @@ ggplot(global_trend, aes(x = year, y = avg_prevalence)) +
   labs(
     title = "Impact of Economic Shocks on Global Food Insecurity (1999-2028)",
     x = "Year",
-    y = "Average Prevalence (%)",
+    y = "Average Prevalence",
     caption = "Source: World Food Security Outlook (WFSO)"
   ) +
   theme_minimal() +
@@ -184,10 +183,9 @@ ggplot(global_trend, aes(x = year, y = avg_prevalence)) +
   )
 ```
 
-```         
-#4
+### Observations:
 The graph shows that global food insecurity has increased over time, with large rises during big economic problems like the 2008 Financial Crisis and the COVID-19 pandemic. Both events impacted economies, supply chains, and jobs, leading to lasting effects on food security. While trends after 2020 show some sings of stabilization, food insecurity remains so high that the recovery is bumpy. These patterns show that food systems need to be resilient and based on global collaboration, providing a preparedness and response to future crises so the vulnerable populations are protected against economic or environmental shocks.
-```
+
 
 
 
@@ -247,9 +245,9 @@ ggplot(map_data) +
 
 ```
 
-```         
+### Observations:      
 The map emphasizes the fact that there is a wide problem related to food security in Sub-Saharan Africa and South Asia, mainly because of phenomena such as conflicts, climate change, and economic troubles. On the other hand, the least bothered areas include North America, Europe, and East Asia, since they have good food systems and resources. New hotspots are visible in Central America and the Middle East, due to political conflicts and climate-related issues. These differences show the urgent need for specific actions in affected areas and global efforts to deal with main problems such as inequality and climate change. The current crisis needs to be dealt with effectively through sustainable farming, equitable distribution of food, and international collaboration.
-```
+
 
 ```{r}
 
@@ -337,9 +335,9 @@ map_2028 <- ggplot(map_data_2028) +
 
 ```
 
-```         
+### Observations:       
 Comparing the 1999 and 2028 maps of food insecurity, one can determine major changes in various parts of the world. Sub-Saharan Africa and South Asia are getting worse due to climate change, conflict, and economic problems. On the other hand, East Asia, particularly China, and South America, perform better because of improved policies and systems. North America and Western Europe remain stable with low food insecurity. It has to be noted that increasing concentration of severe food insecurity in vulnerable regions calls for urgent international cooperation, climate action, and investment in sustainable agriculture and infrastructure that will help reduce disparities and bring about a more equitable global food system.
-```
+
 
 ```{r}
 #8.Regional Hotspots of Food Insecurity:
@@ -403,9 +401,9 @@ ggplot(map_data) +
 
 ```
 
-```         
+### Observations:        
 The map indicates the major global hotspots of critical food insecurity, with Africa south of the Sahara in the lead because of pervasive poverty, protracted conflicts, and climate change. Thus, countries like Sudan and South Sudan, Pakistan, and Afghanistan face critical situations; Yemen is also very heavily affected by its conflict and displacement. There are newly emerging hotspots in parts of Central and South America and Central Asia. North America, Western Europe, and East Asia face minimal food insecurity because of their strong food systems and economic stability. This would involve immediate global action composed of concrete interventions, sustainable agriculture, and investment in infrastructure and education that will increase the resilience of food systems in the regions most severely affected by the crisis.
-```
+
 
 ```{r}
 #9.Country-Level Projections for 2028:
@@ -461,9 +459,9 @@ ggplot(map_data_2028) +
   )
 ```
 
-```         
+### Observations:       
 The forecast of 2028 global food insecurity shows some glaring regional disparities, whereby this trio of poverty, conflict, and climate change most troubles Sub-Saharan Africa and South Asia. Critical hotspots are Afghanistan, Pakistan, and Yemen. In contrast, North America, Western Europe, and parts of East Asia can maintain a low level of food insecurity due to strong food systems and stable economies, which have buffered these threats. There is concern in Central and South America and Central Asia. While working on conflict resolution and global cooperation, investments would have to be done in sustainable agriculture, climate resilience, and infrastructure for taking care of the most vulnerable regions for global food security.
-```
+
 
 
 
@@ -471,27 +469,26 @@ The forecast of 2028 global food insecurity shows some glaring regional disparit
 #12.Food Insecurity vs. Economic Shocks:
 ##Bar graph showing average food insecurity before and after major economic shocks.
 
-# Define periods of economic shocks
+# Define periods of economic shocks and set the chronological order
 data <- data |>
   mutate(
-    economic_period = case_when(
+    economic_period = factor(case_when(
       year < 2008 ~ "Before 2008 Financial Crisis",
       year >= 2008 & year <= 2009 ~ "During 2008 Financial Crisis",
       year > 2009 & year < 2020 ~ "After 2008, Before COVID-19",
       year >= 2020 ~ "During COVID-19 Pandemic"
-    )
+    ), levels = c(
+      "Before 2008 Financial Crisis",
+      "During 2008 Financial Crisis",
+      "After 2008, Before COVID-19",
+      "During COVID-19 Pandemic"
+    )) # Set levels for chronological order
   )
 
 # Calculate average food insecurity for each period
 avg_insecurity <- data |>
   group_by(economic_period) |>
-  summarise(avg_prevalence = mean(value, na.rm = TRUE)) |>
-  arrange(factor(economic_period, levels = c(
-    "Before 2008 Financial Crisis",
-    "During 2008 Financial Crisis",
-    "After 2008, Before COVID-19",
-    "During COVID-19 Pandemic"
-  )))
+  summarise(avg_prevalence = mean(value, na.rm = TRUE)) 
 
 # Plot the bar graph
 ggplot(avg_insecurity, aes(x = economic_period, y = avg_prevalence, fill = economic_period)) +
@@ -499,7 +496,7 @@ ggplot(avg_insecurity, aes(x = economic_period, y = avg_prevalence, fill = econo
   labs(
     title = "Impact of Economic Shocks on Food Insecurity",
     x = "Economic Period",
-    y = "Average Prevalence of Food Insecurity (%)",
+    y = "Average Prevalence of Food Insecurity",
     caption = "Source: World Food Security Outlook (WFSO)"
   ) +
   scale_fill_brewer(palette = "Set2") + # Choose a color palette
@@ -507,13 +504,14 @@ ggplot(avg_insecurity, aes(x = economic_period, y = avg_prevalence, fill = econo
   theme(
     text = element_text(size = 12),
     plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 45, hjust = 1) # Tilt labels for readability
   )
+
 ```
 
-```         
+### Observations:        
 The bar chart shows how economic issues, like the 2008 Financial Crisis and COVID-19, have worsened the situation of food insecurity throughout the world. Food insecurity stood at a low level before 2008 but went up during the financial crisis and remained higher in the years after. The jump could be attributed to COVID-19 since it severely disrupted the economy by job losses and supply chain problems. These events only prove that the weaker sections of society are hit hardest by the brunt of the crisis. Stronger social safety nets, resilient food systems, and contingency plans will be needed to decrease vulnerabilities and assure food security during future global shocks.
-```
+
 
 ```{r}
 #Population and Demographics
@@ -532,7 +530,7 @@ ggplot(global_population_insecurity, aes(x = year, y = total_population_affected
   labs(
     title = "Global Population Affected by Food Insecurity (1999-2028)",
     x = "Year",
-    y = "Total Population Affected (Millions)",
+    y = "Total Population Affected ",
     caption = "Source: World Food Security Outlook (WFSO)"
   ) +
   theme_minimal() +
@@ -544,42 +542,54 @@ ggplot(global_population_insecurity, aes(x = year, y = total_population_affected
 
 ```
 
-```         
+### Observations:        
 One may clearly see from the bar chart that from 1999 until 2028, there has been a steady rise in the percentage of the population who cannot afford food, with a very high peak in 2020. This was because of the COVID-19 pandemic and the economy disruptions plus troubles in the supply chain thereof. The recovery efforts were very slow, and it was not until 2028 that it was brought to a stabilized level before the pandemic. Until 2020, the consistent activity of the rise has been the main catalyst that was driven by environmental change, population growth, and economic disparity. These tendencies bring out the call for innovation of food security systems as well as improvement in social safety nets, along with global sharing and joint actions directed to the resolution of poverty, conflicts, and climate change healthily in the future.
-```
+
 
 ```{r}
 #14.Country-Level Population at Risk:
 ## Bubble chart with bubble size representing the population affected by food insecurity.
 
 
-# Filter data for a specific year (e.g., 2028)
+# Filter data for the top 15 countries by population affected
 data_filtered <- data |>
   filter(year == 2028) |>
-  select(country, population_affected = value) # Replace 'value' with the actual column for population
+  select(country, population_affected = value) |> # Replace 'value' with the actual column for population
+  arrange(desc(population_affected)) |> 
+  slice(1:15) # Select the top 15 countries
 
 # Plot the bubble chart
-ggplot(data_filtered, aes(x = reorder(country, -population_affected), y = population_affected, size = population_affected)) +
+ggplot(data_filtered, aes(
+  x = reorder(country, population_affected), 
+  y = population_affected / 1e6,  # Convert to millions for better readability
+  size = population_affected / 1e6  # Adjust bubble size based on millions
+)) +
   geom_point(color = "steelblue", alpha = 0.7) + # Bubble points
+  scale_size_continuous(
+    range = c(3, 15), 
+    guide = guide_legend(title = "Population (Millions)")
+  ) + # Adjust bubble size
   labs(
-    title = "Country-Level Population at Risk of Food Insecurity (2028)",
+    title = "Top 15 Countries by Population at Risk of Food Insecurity (2028)",
     x = "Country",
-    y = "Population Affected (Millions)",
-    size = "Population Affected",
+    y = "Population Affected (Millions)", # Updated label for clarity
     caption = "Source: World Food Security Outlook (WFSO)"
   ) +
   theme_minimal() +
   theme(
     text = element_text(size = 12),
     plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-    axis.text.x = element_text(angle = 90, hjust = 1),
-    legend.position = "right"
-  )
+    axis.text.x = element_text(angle = 45, hjust = 1), # Tilt x-axis labels for better readability
+    axis.text.y = element_text(size = 10),
+    legend.position = "bottom"  # Place the legend at the bottom
+  ) +
+  coord_flip() # Flip the axes for horizontal alignment
+
 ```
 
-```         
+### Observations:       
 The bubble chart shows which countries will have the most people at risk of food insecurity in 2028. India, Nigeria, and the Democratic Republic of Congo have the highest numbers. Sub-Saharan Africa and South Asia will be affected the most because of poverty, high population density, and economic problems.Smaller countries are more vulnerable, however, due to their insufficient infrastructure and resources, even though they have fewer affected citizens. This will require different strategies for the smaller and more vulnerable nations and interventions for high-burden countries like Nigeria and India. All told, that makes it all too clear that greater international cooperation, investment in sustainable agriculture, and stronger social safety nets will be needed to lower food insecurity at the national level.
-```
+
 
 ```{r}
 #15. Demographic Trends Among Food-Insecure Populations:
@@ -621,53 +631,10 @@ ggplot(data_filtered, aes(x = demographic, y = total_population_affected, fill =
 
 ```
 
-```         
+### Observations:        
 The chart below shows that the level of food insecurity is much higher in rural areas than in urban areas. This is mainly because they lack infrastructure, depend on farming, and are prone to climate change. Urban areas are less affected but are not safe either due to rapid urban growth in the developing regions, especially in the not-so-well-developed areas. This disparity will need targeted interventions in the rural community, including better agricultural practices, access to markets, and climate-resilient infrastructure. Investments in rural education, health, and technology can be transformative in decreasing global food insecurity and increasing sustainable and inclusive food systems.
-```
 
 
-```{r}
-#17. Confidence Intervals for Projections:
-##Ribbon plot showing upper and lower bounds of projected food insecurity.
-
-# Filter for forecast-related types
-projected_data <- data |>
-  filter(type %in% c("Baseline projection", "Downside projection")) |>
-  mutate(
-    lower_bound = value * 0.9, # Simulate 10% below the mean
-    upper_bound = value * 1.1  # Simulate 10% above the mean
-  )
-
-# Check filtered data
-print(head(projected_data))
-print(nrow(projected_data))
-
-# Plot the ribbon plot if data exists
-if (nrow(projected_data) > 0) {
-  ggplot(projected_data, aes(x = year, y = value)) +
-    geom_ribbon(aes(ymin = lower_bound, ymax = upper_bound), fill = "lightblue", alpha = 0.4) +
-    geom_line(color = "blue", size = 1) +
-    labs(
-      title = "Projected Food Insecurity with Simulated Confidence Intervals (2023-2028)",
-      x = "Year",
-      y = "Projected Prevalence (%)",
-      caption = "Source: World Food Security Outlook (WFSO)"
-    ) +
-    theme_minimal() +
-    theme(
-      text = element_text(size = 12),
-      plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-      axis.text.x = element_text(angle = 45, hjust = 1)
-    )
-} else {
-  print("No data available for plotting.")
-}
-
-```
-
-```         
-It predicts food insecurity between the years 2023 and 2028, giving an indication of this baseline trend with the possible variations represented by upper and lower confidence bounds. There are optimistic projections that there can be a decrease by 10% in the case of food insecurity if proactive steps are taken in agricultural productivity, equitable food distribution, and global collaboration. Introducing a more pessimistic risk scenario communicated that inaction is associated with an increase of 10% in food insecurity. Such a baseline signals a period of relative stability and absence of signal change in light of current conditions; however, the chart persistently reminds policymakers of the different options available for resiliency planning to avert threatening consequences. These observations can inform the policymakers of varying scenarios and guide their commitments toward sustainable practices, infrastructure, and social safety nets for best-case outcomes.
-```
 
 ```{r}
 #Multivariate Analysis
@@ -713,9 +680,9 @@ ggplot(heatmap_data, aes(x = year, y = type, fill = avg_value)) +
   )
 ```
 
-```         
+### Observations:        
 Hence, the map shows food insecurity trends by year and type of projection, with deeper colors indicating higher prevalence. The older estimation gave a higher prevalence, while the refiner models provide better forecasts for the same. There was a slight decline in the baseline projection, while the downside pressroom showed a much worse picture further on from 2020. The chart shows how food insecurity status reacts to policy decisions, economic shocks, and global crises. Proactive measures such as sustainable food systems, economic stability, and climate actions will yield optimistic solutions. The heat map allows policymakers to identify potential risks and prioritize strategies for avoiding worst-case scenarios, thus reducing global food insecurity.
-```
+
 
 ```{r}
 #19. Impact of Policy Initiatives on Food Insecurity:
@@ -745,7 +712,7 @@ ggplot(policy_data, aes(x = year, y = avg_value, color = policy)) +
     title = "Impact of Policy Initiatives on Food Insecurity",
     subtitle = "Trends in food insecurity prevalence in countries with and without major policies",
     x = "Year",
-    y = "Average Food Insecurity Prevalence (%)",
+    y = "Average Food Insecurity Prevalence",
     color = "Policy Status",
     caption = "Source: World Food Security Outlook (WFSO)"
   ) +
@@ -759,6 +726,6 @@ ggplot(policy_data, aes(x = year, y = avg_value, color = policy)) +
 
 ```
 
-```         
+### Observations:      
 The graph illustrates that those countries with food-security programs-the USA, India, and Brazil-have much lower levels of food insecurity than countries that did not have such programs. Countries that did not have policies suffered a steady increase in food insecurity, particularly after 2020, which brings out the vulnerability of these nations to global crises. Therein lies the most-important contrasts in this equation of the importance of the interventions, such as food subsidies, agricultural assistance, and social safety nets. Those without policies are encouraged to adopt the ones already shown to be useful to prevent further escalation, while those who already have gone ahead will just concentrate on finetuning their policies. Cooperation at the international level and an exchange of information are useful in paving the way for closing policy gaps and fighting global food insecurity.
-```
+
